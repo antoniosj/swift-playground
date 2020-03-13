@@ -19,11 +19,11 @@ class ViewController: UIViewController {
 
 
     @IBAction func keyPressed(_ sender: UIButton) {
-        print("I got pressed")
-        playSound()
+        print(sender.titleLabel?.text)
+        playSound(resource: sender.titleLabel?.text)
     }
 
-    func playSound() {
+    func playSound(resource: String?) {
 //        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else { return }
 //
 //        do {
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 //            print(error.localizedDescription)
 //        }
         
-        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+        let url = Bundle.main.url(forResource: resource, withExtension: "wav")
         player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
     }
